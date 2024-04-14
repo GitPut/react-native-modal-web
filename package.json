@@ -1,6 +1,6 @@
 {
   "name": "react-native-modal-web",
-  "version": "13.0.1",
+  "version": "13.0.3",
   "description": "This fixes react-native-modal for web. Which has a Backhandler error in react-native-web.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

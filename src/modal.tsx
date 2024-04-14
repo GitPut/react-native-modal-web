@@ -8,7 +8,6 @@ import {
   KeyboardAvoidingView,
   Modal,
   PanResponder,
-  BackHandler,
   PanResponderGestureState,
   PanResponderInstance,
   Platform,
@@ -232,7 +231,10 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
     }
   }
 
-  static getDerivedStateFromProps(nextProps: Readonly<ModalProps>, state: State) {
+  static getDerivedStateFromProps(
+    nextProps: Readonly<ModalProps>,
+    state: State,
+  ) {
     if (!state.isVisible && nextProps.isVisible) {
       return {isVisible: true, showContent: true};
     }
@@ -252,14 +254,9 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
     if (this.state.isVisible) {
       this.open();
     }
-    BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPress);
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener(
-      'hardwareBackPress',
-      this.onBackButtonPress,
-    );
     if (this.didUpdateDimensionsEmitter) {
       this.didUpdateDimensionsEmitter.remove();
     }
